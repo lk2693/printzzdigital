@@ -1,4 +1,7 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/demos/dokument-analyse/page": "app/demos/dokument-analyse/page.js",
   "/page": "app/page.js",
+  "/demos/ki-assistent/page": "app/demos/ki-assistent/page.js",
   "/demos/ki-chatbot/page": "app/demos/ki-chatbot/page.js"
 }
