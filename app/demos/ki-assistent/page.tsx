@@ -1,9 +1,8 @@
-// app/demos/ki-assistent/page.tsx
 "use client";
 
-import KIAssistentDemo from "../../../components/KIAssistentDemo";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
+import KIAssistentDemo from "@/components/KIAssistentDemo";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function KIAssistentPage() {
   return (
