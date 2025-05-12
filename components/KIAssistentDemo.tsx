@@ -1,7 +1,7 @@
 // components/KIAssistentDemo.tsx
 import React, { useState } from 'react';
 import { Brain, FileSearch, BarChart4, MessageCircle, ArrowRight, CheckCircle, ExternalLink } from 'lucide-react';
-import AIDemo from './AIDemo';
+import AIDemo from '@/components/AIDemo';
 import DocumentAnalysis from './DocumentAnalysis';
 import DataAnalysisDemo from './DataAnalysisDemo';
 
