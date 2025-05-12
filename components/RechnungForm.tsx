@@ -4,6 +4,13 @@ import { useState } from "react";
 import { FileText, Download } from "lucide-react";
 import { PDFDownloadLink, Document, Page, Text, StyleSheet } from "@react-pdf/renderer";
 
+// Typdefinition für Rechnungspositionen
+interface InvoiceItem {
+  description: string;
+  quantity: number;
+  price: number;
+}
+
 const styles = StyleSheet.create({
   page: { padding: 30 },
   section: { marginBottom: 10 },
@@ -13,7 +20,12 @@ const styles = StyleSheet.create({
   itemHeader: { fontSize: 12, marginTop: 10, marginBottom: 4, textDecoration: "underline" }
 });
 
-const RechnungPDF = ({ subtotal, tax, total, items }: { subtotal: number; tax: number; total: number; items: { description: string; quantity: number; price: number }[] }) => (
+const RechnungPDF = ({ subtotal, tax, total, items }: { 
+  subtotal: number; 
+  tax: number; 
+  total: number; 
+  items: InvoiceItem[] 
+}) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <Text style={styles.company}>PrintzzDigital</Text>
@@ -38,7 +50,8 @@ const RechnungPDF = ({ subtotal, tax, total, items }: { subtotal: number; tax: n
 );
 
 export default function RechnungForm() {
-  const [items, setItems] = useState([{ description: "", quantity: 1, price: 0 }]);
+  // Jetzt mit korrektem Typ
+  const [items, setItems] = useState<InvoiceItem[]>([{ description: "", quantity: 1, price: 0 }]);
 
   const addItem = () =>
     setItems([...items, { description: "", quantity: 1, price: 0 }]);
@@ -46,9 +59,12 @@ export default function RechnungForm() {
   const removeItem = (index: number) =>
     setItems(items.filter((_, i) => i !== index));
 
-  const updateItem = (index: number, field: "description" | "quantity" | "price", value: any) => {
+  const updateItem = (index: number, field: keyof InvoiceItem, value: string | number) => {
     const updatedItems = [...items];
-    updatedItems[index][field] = value;
+    updatedItems[index] = {
+      ...updatedItems[index],
+      [field]: value
+    };
     setItems(updatedItems);
   };
 
