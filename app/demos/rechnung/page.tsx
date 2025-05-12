@@ -1,6 +1,8 @@
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
-import RechnungForm from "../../../components/RechnungForm";
+"use client";
+
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import RechnungForm from "@/components/RechnungForm";
 
 export default function RechnungDemo() {
   return (
