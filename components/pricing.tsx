@@ -4,20 +4,23 @@ import React, { useState, JSX } from 'react';
 import { Check, Clock, Store, FileCode, Shield, Bot, Globe, Smartphone, Code, Sparkles, Zap } from 'lucide-react';
 import AnfrageModal from './AnfrageModal';
 
+// Definiere den Typ für ein einzelnes Service-Item
+interface ServiceItem {
+  title: string;
+  description: string;
+  price?: string;
+  deliveryTime: string;
+  icon: JSX.Element;
+  gradient: string;
+  features: string[];
+  priceUnit?: string;
+}
+
 export default function Pricing() {
-  const [selectedPackage, setSelectedPackage] = useState<{
-    title: string;
-    description: string;
-    price?: string;
-    deliveryTime: string;
-    icon: JSX.Element;
-    gradient: string;
-    features: string[];
-    priceUnit?: string;
-  } | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<ServiceItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleProjectStart = (item: { title: string; description: string; price: string; deliveryTime: string; icon: JSX.Element; gradient: string; features: string[]; priceUnit?: string }) => {
+  const handleProjectStart = (item: ServiceItem) => {
     setSelectedPackage(item);
     setIsModalOpen(true);
   };
@@ -38,7 +41,8 @@ export default function Pricing() {
             "Framer Motion Animationen",
             "Real-time Analytics",
             "Progressive Web App"
-          ]
+          ],
+          priceUnit: undefined // Explizit auf undefined setzen
         },
         {
           title: "Corporate Premium",
@@ -51,7 +55,8 @@ export default function Pricing() {
             "Custom Animations",
             "Multi-language Support",
             "Advanced SEO"
-          ]
+          ],
+          priceUnit: undefined // Explizit auf undefined setzen
         },
         {
           title: "E-Commerce Plus",
@@ -65,7 +70,7 @@ export default function Pricing() {
             "One-Click Checkout",
             "Real-time Bestandsverwaltung"
           ],
-           
+          priceUnit: undefined // Explizit auf undefined setzen
         }
       ]
     },
@@ -84,7 +89,8 @@ export default function Pricing() {
             "GraphQL API",
             "Real-time Features",
             "Cloud-native Design"
-          ]
+          ],
+          priceUnit: undefined // Explizit auf undefined setzen
         },
         {
           title: "Data Intelligence",
@@ -97,7 +103,8 @@ export default function Pricing() {
             "Automated Insights",
             "Real-time Sync",
             "Custom ML Models"
-          ]
+          ],
+          priceUnit: undefined // Explizit auf undefined setzen
         }
       ]
     },
@@ -116,7 +123,8 @@ export default function Pricing() {
             "Process Automation",
             "Data Engineering",
             "Custom API Development"
-          ]
+          ],
+          priceUnit: undefined // Explizit auf undefined setzen
         },
         {
           title: "Growth Package",
@@ -129,7 +137,8 @@ export default function Pricing() {
             "Competitor Analysis",
             "Technical SEO",
             "Conversion Rate Optimization"
-          ]
+          ],
+          priceUnit: undefined // Explizit auf undefined setzen
         },
         {
           title: "Digital Presence",
@@ -142,7 +151,8 @@ export default function Pricing() {
             "Rich Media Integration",
             "Reputation Management",
             "Local SEO Boost"
-          ]
+          ],
+          priceUnit: undefined // Explizit auf undefined setzen
         }
       ]
     }
@@ -212,11 +222,9 @@ export default function Pricing() {
                       </p>
                       
                       <div className="mb-8">
-                       
                         {item.priceUnit && (
                           <span className="text-lg text-gray-600">{item.priceUnit}</span>
                         )}
-                      
                       </div>
 
                       <div className="space-y-4">
