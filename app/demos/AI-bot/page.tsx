@@ -1,6 +1,6 @@
 "use client";
 
-import AIDemo from "@/components/AIDemo";
+import ChatDemo from "@/components/ChatDemo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -15,7 +15,7 @@ export default function KIChatbotPage() {
           und automatisieren kann. Testen Sie die Demo mit verschiedenen Szenarien.
         </p>
         <div className="bg-white rounded-lg shadow-md p-6">
-          <AIDemo />
+          <ChatDemo />
         </div>
       </div>
       <Footer />

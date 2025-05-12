@@ -1,7 +1,7 @@
 // components/KIAssistentDemo.tsx
 import React, { useState } from 'react';
 import { Brain, FileSearch, BarChart4, MessageCircle, ArrowRight, CheckCircle, ExternalLink } from 'lucide-react';
-import AIDemo from '@/components/AIDemo';
+import ChatDemo from "@/components/ChatDemo";
 import DocumentAnalysis from './DocumentAnalysis';
 import DataAnalysisDemo from './DataAnalysisDemo';
 
@@ -21,7 +21,7 @@ const KIAssistentDemo: React.FC = () => {
   const renderActiveDemo = () => {
     switch (activeDemo) {
       case 'chatbot':
-        return <AIDemo />;
+        return <ChatDemo />;
       case 'document':
         return <DocumentAnalysis />;
       case 'data':
