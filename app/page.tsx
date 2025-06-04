@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Showcase from "../components/Showcase";
 import WebseitenAblauf from "../components/WebseitenAblauf";
 import TechStack from "@/components/TechStack";
-import Pricing from "@/components/pricing";
+import DigitalTransformation from '@/components/DigitalTransformation';
 
 
 
@@ -15,11 +15,11 @@ export default function Home() {
     <>
     <Header />
     <Hero />
-    <Projects />
-  <TechStack />
     <Showcase />
+    <DigitalTransformation />
+    <Projects />
+    <TechStack />
     <WebseitenAblauf/> 
-    <Pricing />
     <Contact />
     <Footer />
   </>

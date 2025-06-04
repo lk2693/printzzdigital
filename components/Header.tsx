@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, FileText, ClipboardList, Calendar, BarChart3, Brain, FileSearch, Database, Stethoscope, Scale, Wrench, Store, Truck, Scissors } from "lucide-react";
+import { ChevronDown, Globe, Store, Search, Users, Database, Bot, BarChart3, Wrench, FileText, Calendar, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [softwareDropdownOpen, setSoftwareDropdownOpen] = useState(false);
-  const [aiDropdownOpen, setAiDropdownOpen] = useState(false);
-  const [branchenDropdownOpen, setBranchenDropdownOpen] = useState(false);
+  const [onlineDropdownOpen, setOnlineDropdownOpen] = useState(false);
+  const [businessDropdownOpen, setBusinessDropdownOpen] = useState(false);
 
   // Animation variants
   const dropdownVariants = {
@@ -17,17 +16,16 @@ export default function Header() {
   };
 
   const closeAllDropdowns = () => {
-    setSoftwareDropdownOpen(false);
-    setAiDropdownOpen(false);
-    setBranchenDropdownOpen(false);
+    setOnlineDropdownOpen(false);
+    setBusinessDropdownOpen(false);
   };
 
   return (
-    <header className="bg-white shadow-sm fixed w-full z-50 border-b border-gray-100">
+    <header className="bg-white/95 backdrop-blur-sm shadow-sm fixed w-full z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <a href="/" className="text-xl font-medium text-blue-500">
+          <a href="/" className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             PrintzzDigital
           </a>
 
@@ -35,177 +33,127 @@ export default function Header() {
           <nav className="hidden lg:flex items-center">
             <a href="/" className="px-4 py-2 text-gray-700 hover:text-blue-500 transition font-medium">Home</a>
 
-            {/* KI-Automatisierung Dropdown */}
+            {/* Online-Präsenz Dropdown */}
             <div className="relative">
               <button
                 onClick={() => {
-                  setAiDropdownOpen(!aiDropdownOpen);
-                  setSoftwareDropdownOpen(false);
-                  setBranchenDropdownOpen(false);
+                  setOnlineDropdownOpen(!onlineDropdownOpen);
+                  setBusinessDropdownOpen(false);
                 }}
                 className="inline-flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-blue-500 transition font-medium"
               >
-                <span>KI Automatisierung</span>
+                <span>Online-Präsenz</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
 
-              {aiDropdownOpen && (
+              {onlineDropdownOpen && (
                 <motion.div
                   initial="hidden"
                   animate="visible"
                   variants={dropdownVariants}
-                  className="absolute left-0 mt-4 w-[400px] bg-white border border-gray-100 shadow-xl rounded-2xl p-4 z-50
-                  grid grid-cols-1 sm:grid-cols-2 gap-4"
+                  className="absolute left-0 mt-4 w-[420px] bg-white border border-gray-100 shadow-xl rounded-2xl p-6 z-50"
                 >
-                  <a href="/demos/ki-chatbot" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <Brain className="w-5 h-5" />
-                      KI-Chatbot
-                    </div>
-                    <p className="text-sm text-gray-500">Intelligente Kundenkommunikation</p>
-                  </a>
+                  <div className="mb-4">
+                    <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">Ihre digitale Sichtbarkeit</h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      <a href="/webseiten" className="p-4 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 transition flex flex-col gap-2 border border-blue-100">
+                        <div className="flex items-center gap-2 text-blue-600 font-semibold">
+                          <Globe className="w-5 h-5" />
+                          Webseiten
+                        </div>
+                        <p className="text-sm text-gray-600">Moderne, schnelle Websites</p>
+                      </a>
 
-                  <a href="/demos/dokument-analyse" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <FileSearch className="w-5 h-5" />
-                      Dokumentenanalyse
-                    </div>
-                    <p className="text-sm text-gray-500">Automatische Informationsextraktion</p>
-                  </a>
+                      <a href="/online-shops" className="p-4 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 transition flex flex-col gap-2 border border-emerald-100">
+                        <div className="flex items-center gap-2 text-emerald-600 font-semibold">
+                          <Store className="w-5 h-5" />
+                          Online-Shops
+                        </div>
+                        <p className="text-sm text-gray-600">E-Commerce Lösungen</p>
+                      </a>
 
-                  <a href="/demos/daten-analyse" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <BarChart3 className="w-5 h-5" />
-                      KI-Datenanalyse
-                    </div>
-                    <p className="text-sm text-gray-500">Intelligente Geschäftsdatenauswertung</p>
-                  </a>
+                      <a href="/seo-marketing" className="p-4 rounded-xl bg-gradient-to-br from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 transition flex flex-col gap-2 border border-orange-100">
+                        <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                          <Search className="w-5 h-5" />
+                          SEO & Marketing
+                        </div>
+                        <p className="text-sm text-gray-600">Besser gefunden werden</p>
+                      </a>
 
-                  <a href="/demos/ki-assistent" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <Database className="w-5 h-5" />
-                      KI-Assistent
+                      <a href="/social-media" className="p-4 rounded-xl bg-gradient-to-br from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 transition flex flex-col gap-2 border border-purple-100">
+                        <div className="flex items-center gap-2 text-purple-600 font-semibold">
+                          <Users className="w-5 h-5" />
+                          Social Media
+                        </div>
+                        <p className="text-sm text-gray-600">Digitale Präsenz aufbauen</p>
+                      </a>
                     </div>
-                    <p className="text-sm text-gray-500">Maßgeschneiderte KI-Lösungen für KMU</p>
-                  </a>
+                  </div>
                 </motion.div>
               )}
             </div>
 
-            {/* Branchenlösungen Dropdown */}
+            {/* Geschäftsprozesse Dropdown */}
             <div className="relative">
               <button
                 onClick={() => {
-                  setBranchenDropdownOpen(!branchenDropdownOpen);
-                  setAiDropdownOpen(false);
-                  setSoftwareDropdownOpen(false);
+                  setBusinessDropdownOpen(!businessDropdownOpen);
+                  setOnlineDropdownOpen(false);
                 }}
                 className="inline-flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-blue-500 transition font-medium"
               >
-                <span>Branchenlösungen</span>
+                <span>Geschäftsprozesse</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
 
-              {branchenDropdownOpen && (
+              {businessDropdownOpen && (
                 <motion.div
                   initial="hidden"
                   animate="visible"
                   variants={dropdownVariants}
-                  className="absolute left-0 mt-4 w-[400px] bg-white border border-gray-100 shadow-xl rounded-2xl p-4 z-50
-                  grid grid-cols-1 sm:grid-cols-2 gap-4"
+                  className="absolute left-0 mt-4 w-[420px] bg-white border border-gray-100 shadow-xl rounded-2xl p-6 z-50"
                 >
-                  <a href="/branchen/aertzte" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <Stethoscope className="w-5 h-5" />
-                      Für Ärzte
-                    </div>
-                    <p className="text-sm text-gray-500">Optimierte Praxisorganisation</p>
-                  </a>
+                  <div className="mb-4">
+                    <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">Effizienz steigern</h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      <a href="/crm-systeme" className="p-4 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 hover:from-indigo-100 hover:to-blue-100 transition flex flex-col gap-2 border border-indigo-100">
+                        <div className="flex items-center gap-2 text-indigo-600 font-semibold">
+                          <Database className="w-5 h-5" />
+                          CRM-Systeme
+                        </div>
+                        <p className="text-sm text-gray-600">Kundenverwaltung digital</p>
+                      </a>
 
-                  <a href="/branchen/anwaelte" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <Scale className="w-5 h-5" />
-                      Für Anwälte
-                    </div>
-                    <p className="text-sm text-gray-500">Dokumentenanalyse & Rechtsrecherche</p>
-                  </a>
+                      <a href="/automatisierung" className="p-4 rounded-xl bg-gradient-to-br from-purple-50 to-violet-50 hover:from-purple-100 hover:to-violet-100 transition flex flex-col gap-2 border border-purple-100">
+                        <div className="flex items-center gap-2 text-purple-600 font-semibold">
+                          <Bot className="w-5 h-5" />
+                          KI-Automatisierung
+                        </div>
+                        <p className="text-sm text-gray-600">Prozesse automatisieren</p>
+                      </a>
 
-                  <a href="/branchen/handwerk" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <Wrench className="w-5 h-5" />
-                      Für Handwerker
-                    </div>
-                    <p className="text-sm text-gray-500">Angebotserstellung & Planung</p>
-                  </a>
+                      <a href="/datenanalyse" className="p-4 rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 transition flex flex-col gap-2 border border-green-100">
+                        <div className="flex items-center gap-2 text-green-600 font-semibold">
+                          <BarChart3 className="w-5 h-5" />
+                          Datenanalyse
+                        </div>
+                        <p className="text-sm text-gray-600">Business Intelligence</p>
+                      </a>
 
-                  <a href="/branchen/einzelhandel" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <Store className="w-5 h-5" />
-                      Für Einzelhandel
+                      <a href="/software-entwicklung" className="p-4 rounded-xl bg-gradient-to-br from-slate-50 to-gray-50 hover:from-slate-100 hover:to-gray-100 transition flex flex-col gap-2 border border-slate-100">
+                        <div className="flex items-center gap-2 text-slate-600 font-semibold">
+                          <Settings className="w-5 h-5" />
+                          Custom Software
+                        </div>
+                        <p className="text-sm text-gray-600">Maßgeschneiderte Tools</p>
+                      </a>
                     </div>
-                    <p className="text-sm text-gray-500">Bestandsoptimierung & Kundenanalyse</p>
-                  </a>
+                  </div>
                 </motion.div>
               )}
             </div>
 
-            {/* CRM & Software Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setSoftwareDropdownOpen(!softwareDropdownOpen);
-                  setAiDropdownOpen(false);
-                  setBranchenDropdownOpen(false);
-                }}
-                className="inline-flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-blue-500 transition font-medium"
-              >
-                <span>CRM & Software</span>
-                <ChevronDown className="w-4 h-4" />
-              </button>
-
-              {softwareDropdownOpen && (
-                <motion.div
-                  initial="hidden"
-                  animate="visible"
-                  variants={dropdownVariants}
-                  className="absolute left-0 mt-4 w-[400px] bg-white border border-gray-100 shadow-xl rounded-2xl p-4 z-50
-                  grid grid-cols-1 sm:grid-cols-2 gap-4"
-                >
-                  <a href="/demos/rechnung" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <FileText className="w-5 h-5" />
-                      Rechnungs-Demo
-                    </div>
-                    <p className="text-sm text-gray-500">Automatisierte Rechnungserstellung</p>
-                  </a>
-
-                  <a href="/demos/angebot" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <ClipboardList className="w-5 h-5" />
-                      Angebots-Demo
-                    </div>
-                    <p className="text-sm text-gray-500">Schnell und digital Angebote versenden</p>
-                  </a>
-
-                  <a href="/demos/termin" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <Calendar className="w-5 h-5" />
-                      Terminbuchungs-Demo
-                    </div>
-                    <p className="text-sm text-gray-500">Online-Kalender mit Bestätigungen</p>
-                  </a>
-
-                  <a href="/demos/dashboard" className="p-4 rounded-xl bg-white hover:bg-gray-50 transition flex flex-col gap-2 border border-gray-100">
-                    <div className="flex items-center gap-2 text-blue-500 font-medium">
-                      <BarChart3 className="w-5 h-5" />
-                      Dashboard-Demo
-                    </div>
-                    <p className="text-sm text-gray-500">Business Intelligence visualisiert</p>
-                  </a>
-                </motion.div>
-              )}
-            </div>
-
+            <a href="/portfolio" className="px-4 py-2 text-gray-700 hover:text-blue-500 transition font-medium">Portfolio</a>
             <a href="/#kontakt" className="px-4 py-2 text-gray-700 hover:text-blue-500 transition font-medium">Kontakt</a>
           </nav>
 
@@ -215,9 +163,9 @@ export default function Header() {
               href="/#kontakt"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2.5 rounded-full hover:shadow-lg transition font-medium"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-full hover:shadow-lg transition font-medium"
             >
-              Jetzt starten
+              Projekt starten
             </motion.a>
           </div>
 
@@ -239,60 +187,73 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation - Apple Style */}
+      {/* Mobile Navigation */}
       {menuOpen && (
         <motion.div 
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           transition={{ duration: 0.3 }}
-          className="lg:hidden bg-white px-6 pb-6 pt-2 shadow-sm border-t border-gray-100"
+          className="lg:hidden bg-white/95 backdrop-blur-sm px-6 pb-6 pt-2 shadow-sm border-t border-gray-100"
         >
           <div className="space-y-5">
             <a href="/" className="block text-gray-700 hover:text-blue-500 font-medium py-2">Home</a>
 
-            
-            {/* KI-Demos im Mobile-Menü */}
+            {/* Online-Präsenz im Mobile-Menü */}
             <div className="py-2">
-              <p className="text-sm font-medium text-gray-400 uppercase tracking-wide">KI Automatisierung</p>
-              <div className="mt-3 space-y-3 pl-1">
-                <a href="/demos/ki-chatbot" className="block text-gray-700 hover:text-blue-500 font-medium">KI-Chatbot</a>
-                <a href="/demos/dokument-analyse" className="block text-gray-700 hover:text-blue-500 font-medium">Dokumentenanalyse</a>
-                <a href="/demos/daten-analyse" className="block text-gray-700 hover:text-blue-500 font-medium">KI-Datenanalyse</a>
-                <a href="/demos/ki-assistent" className="block text-gray-700 hover:text-blue-500 font-medium">KI-Assistent</a>
+              <p className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">Online-Präsenz</p>
+              <div className="space-y-3 pl-1">
+                <a href="/webseiten" className="flex items-center gap-3 text-gray-700 hover:text-blue-500 font-medium py-1">
+                  <Globe className="w-4 h-4 text-blue-500" />
+                  Webseiten
+                </a>
+                <a href="/online-shops" className="flex items-center gap-3 text-gray-700 hover:text-blue-500 font-medium py-1">
+                  <Store className="w-4 h-4 text-emerald-500" />
+                  Online-Shops
+                </a>
+                <a href="/seo-marketing" className="flex items-center gap-3 text-gray-700 hover:text-blue-500 font-medium py-1">
+                  <Search className="w-4 h-4 text-orange-500" />
+                  SEO & Marketing
+                </a>
+                <a href="/social-media" className="flex items-center gap-3 text-gray-700 hover:text-blue-500 font-medium py-1">
+                  <Users className="w-4 h-4 text-purple-500" />
+                  Social Media
+                </a>
               </div>
             </div>
             
-            {/* Branchenlösungen im Mobile-Menü */}
+            {/* Geschäftsprozesse im Mobile-Menü */}
             <div className="py-2">
-              <p className="text-sm font-medium text-gray-400 uppercase tracking-wide">Branchenlösungen</p>
-              <div className="mt-3 space-y-3 pl-1">
-                <a href="/branchen/aertzte" className="block text-gray-700 hover:text-blue-500 font-medium">Für Ärzte</a>
-                <a href="/branchen/anwaelte" className="block text-gray-700 hover:text-blue-500 font-medium">Für Anwälte</a>
-                <a href="/branchen/handwerk" className="block text-gray-700 hover:text-blue-500 font-medium">Für Handwerker</a>
-                <a href="/branchen/einzelhandel" className="block text-gray-700 hover:text-blue-500 font-medium">Für Einzelhandel</a>
+              <p className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">Geschäftsprozesse</p>
+              <div className="space-y-3 pl-1">
+                <a href="/crm-systeme" className="flex items-center gap-3 text-gray-700 hover:text-blue-500 font-medium py-1">
+                  <Database className="w-4 h-4 text-indigo-500" />
+                  CRM-Systeme
+                </a>
+                <a href="/automatisierung" className="flex items-center gap-3 text-gray-700 hover:text-blue-500 font-medium py-1">
+                  <Bot className="w-4 h-4 text-purple-500" />
+                  KI-Automatisierung
+                </a>
+                <a href="/datenanalyse" className="flex items-center gap-3 text-gray-700 hover:text-blue-500 font-medium py-1">
+                  <BarChart3 className="w-4 h-4 text-green-500" />
+                  Datenanalyse
+                </a>
+                <a href="/software-entwicklung" className="flex items-center gap-3 text-gray-700 hover:text-blue-500 font-medium py-1">
+                  <Settings className="w-4 h-4 text-slate-500" />
+                  Custom Software
+                </a>
               </div>
             </div>
             
-            {/* CRM & Software im Mobile-Menü */}
-            <div className="py-2">
-              <p className="text-sm font-medium text-gray-400 uppercase tracking-wide">CRM & Software</p>
-              <div className="mt-3 space-y-3 pl-1">
-                <a href="/demos/rechnung" className="block text-gray-700 hover:text-blue-500 font-medium">Rechnungs-Demo</a>
-                <a href="/demos/angebot" className="block text-gray-700 hover:text-blue-500 font-medium">Angebots-Demo</a>
-                <a href="/demos/termin" className="block text-gray-700 hover:text-blue-500 font-medium">Terminbuchungs-Demo</a>
-                <a href="/demos/dashboard" className="block text-gray-700 hover:text-blue-500 font-medium">Dashboard-Demo</a>
-              </div>
-            </div>
-            
+            <a href="/portfolio" className="block text-gray-700 hover:text-blue-500 font-medium py-2">Portfolio</a>
             <a href="/#kontakt" className="block text-gray-700 hover:text-blue-500 font-medium py-2">Kontakt</a>
             
             <motion.a
               href="/#kontakt"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="block w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center px-6 py-3 rounded-full hover:shadow-md transition font-medium mt-4"
+              className="block w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center px-6 py-3 rounded-full hover:shadow-md transition font-medium mt-4"
             >
-              Jetzt starten
+              Projekt starten
             </motion.a>
           </div>
         </motion.div>
